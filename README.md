@@ -2,7 +2,7 @@
 
 Este proyecto consiste en la creación de un juego estilo Monopoly con una temática argentina, implementado en el lenguaje de programación Wollok.
 
-<img src="assets/fondos/startMenu.png" alt="Descripción de la imagen" width="500">
+<img src="assets/startMenu.png" alt="Descripción de la imagen" width="500">
 
 ## Tabla de contenidos
 
