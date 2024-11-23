@@ -281,7 +281,7 @@ class Player{
 			juego.jugadores().max({ j => j.dinero() }).victoria()			
 		}else if(self.deuda() > 2000){
 			self.derrota()
-		}else{}
+		}
 	}
 
 	method victoria(){
@@ -306,7 +306,7 @@ class Player{
 		//Borra las propiedades del jugador
 		misPropiedades.clear()
 		//Asigna el turno al siguiente jugador		
-		var sigTurno = if (turno.turnoJugadorNro() < juego.jugadores().size()) turno.turnoJugadorNro()-1 else 0
+		const sigTurno = if (turno.turnoJugadorNro() < juego.jugadores().size()) turno.turnoJugadorNro()-1 else 0
 		turno.turnoJugadorNro(sigTurno)
 		//Remueve al jugador de la lista de jugadores
 		juego.jugadores().remove(self)

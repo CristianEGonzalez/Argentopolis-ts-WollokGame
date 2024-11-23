@@ -3,9 +3,9 @@ import jugadores.*
 
 class Digito{
 	var property position
-	var valor
-	var tipo //"saldo" o "deuda"
-	var jugador
+	const valor
+	const tipo //"saldo" o "deuda"
+	const jugador
 
 	method image() = tipo + valor.ubicacion() + self.num() + ".png"
 	
@@ -34,7 +34,7 @@ object unidad{
 
 
 class Balance{
-	var unJugador
+	const unJugador
 	const x = 5
     const y = unJugador.numero()+2
     var property position = game.at(x,y)
