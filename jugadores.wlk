@@ -314,7 +314,7 @@ class Player{
 		game.schedule(2000, {game.removeVisual(self)} )
 		//Popup derrota
 		const frasesDeDerrota = [0,1,2,3,4,5,6,7,8,9]
-		const derrotado = new Popup(img="derrota" + frasesDeDerrota.anyOne().toString() + ".png",position=game.at(1,2),position=game.at(2,2))
+		const derrotado = new Popup(img="derrota" + frasesDeDerrota.anyOne().toString() + ".png",position=game.at(2,2))
 		game.schedule(3000, { derrotado.addVisual() } )
 		game.schedule(3000, { game.sound("lose.mp3").play() })
 		game.schedule(7500,{ derrotado.removeVisual() })
