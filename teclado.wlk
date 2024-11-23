@@ -9,26 +9,33 @@ object teclado{
 	
 	method configuracion(){
 		//Movimientos de Selector
-		keyboard.up().onPressDo{if (!juego.partidaIniciada())
-			tablero.selector().moveUp()}
+		keyboard.up().onPressDo{
+			if (!juego.partidaIniciada())
+			tablero.selector().moveUp()
+		}
 		keyboard.down().onPressDo{if (!juego.partidaIniciada())
 			tablero.selector().moveDown()}
 	
 		//Empezar partida (Selecciona cantidad de jugadores, elimina Start Menu y genera el tablero)
 		keyboard.enter().onPressDo{
-		const player1 = new Player(img = "jugador1.png", nombre="player1",numero=1)
-		const player2 = new Player(img = "jugador2.png", nombre="player2",numero=2)
-		const player3 = new Player(img = "jugador3.png", nombre="player3",numero=3)
-		const player4 = new Player(img = "jugador4.png", nombre="player4",numero=4)
+			if (game.hasVisual(tablero.selectPlayerScreen())){
+				const player1 = new Player(img = "jugador1.png", nombre="player1",numero=1)
+				const player2 = new Player(img = "jugador2.png", nombre="player2",numero=2)
+				const player3 = new Player(img = "jugador3.png", nombre="player3",numero=3)
+				const player4 = new Player(img = "jugador4.png", nombre="player4",numero=4)
 		
-			if (!juego.partidaIniciada() and tablero.selector().position().y() == 8){
-				juego.iniciarPartida([player1,player2])
+				if (!juego.partidaIniciada() and tablero.selector().position().y() == 8){
+					juego.iniciarPartida([player1,player2])
+				}
+				else if (!juego.partidaIniciada() and tablero.selector().position().y() == 7){
+					juego.iniciarPartida([player1,player2,player3])
+				}
+				else if (!juego.partidaIniciada() and tablero.selector().position().y() == 6){
+					juego.iniciarPartida([player1,player2,player3,player4])
+				}
 			}
-			else if (!juego.partidaIniciada() and tablero.selector().position().y() == 7){
-				juego.iniciarPartida([player1,player2,player3])
-			}
-			else if (!juego.partidaIniciada() and tablero.selector().position().y() == 6){
-				juego.iniciarPartida([player1,player2,player3,player4])
+			else{
+				tablero.generarMenu()
 			}
 		}
 		

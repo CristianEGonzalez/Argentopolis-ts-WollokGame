@@ -3,7 +3,7 @@ import juego.*
 
 class Visual{
     var property position = game.at(0,0)
-    var img = ""
+    const img = ""
 
     method image() = img
     
@@ -75,7 +75,7 @@ class IndicadorJugador inherits Animation{
 }
 
 class WinScreen inherits Animation{
-	var ganador =
+	const ganador =
 		if (juego.jugadores().size()>1){
 			juego.jugadores().filter({ j => j.deuda() == 0 }).max({ j => j.dinero()})
 		}else{

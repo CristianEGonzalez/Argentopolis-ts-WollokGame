@@ -5,14 +5,24 @@ import propiedades.*
 
 object tablero{
 	const property startMenu = new Fondo(img="startMenu.png")
-	const property selectPlayerScreen = new Animation(img="seleccionarJugadores",position = game.at(0,0))
+	const property titulo = new Animation(img="titulo")
+	const property selectPlayerScreen = new Animation(img="seleccionarJugadores")
 	const property selector = new Selector(img="selector.png", position=game.at(0,8))
-	const property mapaArgentina = new Fondo(position=game.at(1,1),img="argentina.png")
+	const property tableroFondo = new Fondo(img="tableroFondo.png", position=game.at(1,1))
 	const property indicadorTurno = new IndicadorJugador(position=game.at(5,7))
 	const property instrucciones1 = new Instrucciones(img = "instrucciones1.png")
 	const property instrucciones2 = new Instrucciones(img = "instrucciones2.png")
 	const property teclas = new Instrucciones(img = "teclas.png")
 	const property teclaInstrucciones = new Visual(position=game.at(3,1),img="teclaInstrucciones.png")
+
+	method generarMenu(){
+		titulo.removeVisual()
+		startMenu.addVisual()
+		selector.addVisual()
+		selectPlayerScreen.addVisual()
+		selectPlayerScreen.animation(2)
+		song.menuSong()
+	}
 
 	method generarTablero(){
 		//Elimina el Menu de Inicio
@@ -21,17 +31,15 @@ object tablero{
 		self.selectPlayerScreen().removeVisual()
 		self.selector().removeVisual()
 		//Fondo de tablero
-		self.mapaArgentina().addVisual()
-		//Tecla en pantalla para abrir instrucciones
-		self.teclaInstrucciones().addVisual()
+		//self.mapaArgentina().addVisual()
+		self.tableroFondo().addVisual()
 		//Indicador de Jugador en turno actual
 		self.indicadorTurno().addVisual()
 		self.indicadorTurno().animation(2)
 		//Coloca todos los casilleros y etiquetas del tablero
 		self.generarCasilleros()
 		//Música de partida
-		song.partida().shouldLoop(true)
-		game.schedule(300,{song.partida().play()})
+		song.gameSong()
 	}
 	
 	method generarCasilleros(){				
@@ -39,33 +47,8 @@ object tablero{
 			banco,salida,
 			new CasilleroSuerte(position = game.at(0,0),img="suerte.png"),
 			new Carcel(position = game.at(0,8),img="carcel.png"),
-			new CasilleroMufa(position = game.at(8,8),img="mufa.png"),
-
-			new Visual(position = game.at(7,1), img = "label-malvinasEntreRios.png"),
-			new Visual(position = game.at(6,1), img = "label-buenosAires.png"),
-			new Visual(position = game.at(5,1), img = "label-santaFe.png"),
-			new Visual(position = game.at(4,1), img = "label-sarmiento.png"),
-			new Visual(position = game.at(3,1), img = "label-santiago.png"),
-			new Visual(position = game.at(2,1), img = "label-laPampa.png"),
-			new Visual(position = game.at(1,1), img = "label-cordobaChaco.png"),
-			new Visual(position = game.at(1,2), img = "label-corrientes.png"),
-			new Visual(position = game.at(1,3), img = "label-misiones.png"),
-			new Visual(position = game.at(1,4), img = "label-roca.png"),
-			new Visual(position = game.at(1,5), img = "label-formosa.png"),
-			new Visual(position = game.at(1,6), img = "label-jujuy.png"),
-			new Visual(position = game.at(1,7), img = "label-saltaTucuman.png"),
-			new Visual(position = game.at(2,7), img = "label-catamarca.png"),
-			new Visual(position = game.at(3,7), img = "label-laRioja.png"),
-			new Visual(position = game.at(4,7), img = "label-mitre.png"),
-			new Visual(position = game.at(5,7), img = "label-sanJuan.png"),
-			new Visual(position = game.at(6,7), img = "label-sanLuis.png"),
-			new Visual(position = game.at(7,7), img = "label-mendozaChubut.png"),
-			new Visual(position = game.at(7,6), img = "label-rioNegro.png"),
-			new Visual(position = game.at(7,5), img = "label-neuquen.png"),
-			new Visual(position = game.at(7,4), img = "label-sanMartin.png"),
-			new Visual(position = game.at(7,3), img = "label-santaCruz.png"),
-			new Visual(position = game.at(7,2), img = "label-tierraDelFuego.png")
-			]
+			new CasilleroMufa(position = game.at(8,8),img="mufa.png")
+		]
 		
 		casilleros.forEach{casillero => game.addVisual(casillero)}
 		banco.todasDelBanco(casilleros)
@@ -78,7 +61,7 @@ object tablero{
 }
 
 class Dado inherits Visual{
-	const property valor = [1,2,3,4,5,6].anyOne()
+	const property valor = 4
 	
 	override method position() = game.at(4,1)
 	override method image() = "dado" + valor.toString() + ".png"

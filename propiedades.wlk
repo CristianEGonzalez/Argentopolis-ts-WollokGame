@@ -86,7 +86,7 @@ object salida{
 		turno.playerOnTurn().cobrarSalario()
 		const cobrasDoble = new Popup(img="cobrasDoble.png",position=game.at(1,2))
 		cobrasDoble.addVisual()
-		game.schedule(2000,{ cobrasDoble.removeVisual() })
+		game.schedule(3000,{ cobrasDoble.removeVisual() })
 	}
 }
 
@@ -100,7 +100,7 @@ class Carcel inherits CasilleroEspecial{
 		game.sound("guardia.mp3").play()
 		const preso = new Popup(img="preso.png",position=game.at(2,2))
 		preso.addVisual()
-		game.schedule(2500,{preso.removeVisual()})
+		game.schedule(3000,{preso.removeVisual()})
 	}
 }
 

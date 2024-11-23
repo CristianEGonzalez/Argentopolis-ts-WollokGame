@@ -20,17 +20,12 @@ object juego{
 		game.cellSize(128)
 		game.boardGround("boardground.png")
 		game.title("Argentópolis")		
-
-		//Pantalla principal
-		tablero.startMenu().addVisual()
-		tablero.selector().addVisual()
-		tablero.selectPlayerScreen().addVisual()
-		tablero.selectPlayerScreen().animation(2)
-
-		//Cancion 
-		song.menu().shouldLoop(true)
-		game.schedule(1000, { song.menu().play()} )
 		
+		//Pantalla Inicio
+		tablero.startMenu().addVisual()
+		tablero.titulo().addVisual()
+		tablero.titulo().animation(2)
+
 		//Configuraciones de teclado
 		teclado.configuracion()
 		
@@ -83,5 +78,15 @@ object song{
 	const property menu = game.sound("muchachos.mp3")
 	const property partida = game.sound("zambaDeMiEsperanza.mp3")
 	const property win = game.sound("winSong.mp3")
+
+	method menuSong(){
+		self.menu().shouldLoop(true)
+		self.menu().play()
+	}
+
+	method gameSong(){
+		self.partida().shouldLoop(true)
+		game.schedule(300,{self.partida().play()})
+	}
 }
 

@@ -10,7 +10,7 @@ class Player{
 	var property deuda = 0
 	var property debeFianza = false
 	var prestamosDisponibles = 3
-	var img
+	const img
 	const property nombre
 	const property numero
 	const misPropiedades = #{}
@@ -85,7 +85,7 @@ class Player{
 	method noTienesDinero(){
 		const dineroInsuficiente = new Popup(img="dineroInsuficiente.png",position=game.at(1,2))
 		dineroInsuficiente.addVisual()
-		game.schedule(2000,{ dineroInsuficiente.removeVisual() })
+		game.schedule(3000,{ dineroInsuficiente.removeVisual() })
 	}
 	
 	
@@ -199,7 +199,7 @@ class Player{
 			//Si no le quedan prestamos disponibles o debe más de 1400 abre un popup de historial crediticio.
 			const historialCrediticio = new Popup(img="historialCrediticio.png",position=game.at(1,2))
 			historialCrediticio.addVisual()
-			game.schedule(2000,{ historialCrediticio.removeVisual() })
+			game.schedule(3000,{ historialCrediticio.removeVisual() })
 		}
 	}
 
@@ -234,7 +234,7 @@ class Player{
 			//Popup de confirmación de pago de préstamo
 			const pagarPrestamo = new Popup(img="pagarPrestamo.png",position=game.at(1,2))
 			pagarPrestamo.addVisual()
-			game.schedule(2000,{ pagarPrestamo.removeVisual() })
+			game.schedule(3000,{ pagarPrestamo.removeVisual() })
 		}else if (dinero >= self.deuda()){
 			//Sonido
 			game.sound("register.mp3").play()
@@ -244,7 +244,7 @@ class Player{
 			//Popup de confirmación de deudas saldadas.
 			const deudasCanceladas = new Popup(img="deudasCanceladas.png",position=game.at(1,2))
 			deudasCanceladas.addVisual()
-			game.schedule(2000,{ deudasCanceladas.removeVisual() })
+			game.schedule(3000,{ deudasCanceladas.removeVisual() })
 		}
 		//Consulta por la condicion de victoria o derrota al pagar una deuda.
 		self.condicionVictoriaODerrota()
@@ -271,7 +271,7 @@ class Player{
 			//Popup de confirmación de pago de fianza
 			const fianza = new Popup(img="fianza.png",position=game.at(1,2))
 			fianza.addVisual()
-			game.schedule(2000,{fianza.removeVisual()})
+			game.schedule(3000,{fianza.removeVisual()})
 		}
 	}
 
