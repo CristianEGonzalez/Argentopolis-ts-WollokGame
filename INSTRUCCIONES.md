@@ -39,6 +39,6 @@ deuda mayor a $2000.
 - **(T)**: Solicitar una trasnferencia de una Propiedad entre jugadores.
 - **(F)**: Finalizar tu turno. (Sólo funciona una vez hayas tirado los dados, evite finalizar el turno antes de que su ficha llegue a destino.)
 
-<img src="assets/popups/instrucciones1.png" alt="Instrucciones Página 1" width="500">
-<img src="assets/popups/instrucciones2.png" alt="Instrucciones Página 2" width="500">
-<img src="assets/popups/teclas.png" alt="Configuración de Teclas" width="500">
+<img src="assets/instrucciones1.png" alt="Instrucciones Página 1" width="500">
+<img src="assets/instrucciones2.png" alt="Instrucciones Página 2" width="500">
+<img src="assets/teclas.png" alt="Configuración de Teclas" width="500">
